@@ -1,13 +1,16 @@
 import { type PropsWithChildren } from 'react';
-import { useDroppable } from '@dnd-kit/core';
+import { UniqueIdentifier, useDroppable } from '@dnd-kit/core';
 
-export interface DroppableProps {}
+export interface DroppableProps {
+  id: UniqueIdentifier;
+}
 
 export default function Droppable({
+  id,
   children,
 }: PropsWithChildren<DroppableProps>) {
   const { isOver, setNodeRef } = useDroppable({
-    id: 'droppable',
+    id,
   });
 
   return (
