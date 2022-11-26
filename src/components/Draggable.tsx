@@ -1,6 +1,5 @@
-import { PropsWithChildren, type SVGProps } from 'react';
+import { type PropsWithChildren, type SVGProps } from 'react';
 import { UniqueIdentifier, useDraggable } from '@dnd-kit/core';
-import { CSS } from '@dnd-kit/utilities';
 
 export interface DraggableProps {
   id: UniqueIdentifier;
@@ -10,32 +9,34 @@ export default function Draggable({
   id,
   children,
 }: PropsWithChildren<DraggableProps>) {
-  const { attributes, listeners, setNodeRef, setActivatorNodeRef, transform } =
-    useDraggable({
-      id,
-    });
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+    id,
+  });
 
   return (
     <div
       ref={setNodeRef}
-      style={{
-        transform: CSS.Translate.toString(transform),
-      }}
-      className="inline-flex items-center space-x-2 bg-white shadow-sm rounded px-2 py-1 text-gray-900"
+      {...attributes}
+      {...listeners}
+      className={`${isDragging ? 'opacity-50' : ''}`}
     >
       {children}
-      <button
-        ref={setActivatorNodeRef}
-        {...listeners}
-        {...attributes}
-        className="touch-none"
-      >
-        <DragIcon className="w-6 h-6" />
-      </button>
     </div>
   );
 }
 
+/**
+ *
+  <button
+    ref={setActivatorNodeRef}
+    {...listeners}
+    {...attributes}
+    className="touch-none"
+  >
+    <DragIcon className="w-6 h-6" />
+  </button>
+ *
+ */
 const DragIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
