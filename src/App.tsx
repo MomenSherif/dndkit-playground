@@ -9,6 +9,7 @@ import BasicSetup from './Examples/useDraggable/1-BasicSetup';
 import DragHandle from './Examples/useDraggable/2-DragHandle';
 import ActivationConstraint from './Examples/useDraggable/3-ActivationConstraint';
 import Modifiers from './Examples/useDraggable/4-Modifiers';
+import DragOverlayExample from './Examples/useDraggable/5-DragOverlay';
 
 const snapToGrid = createSnapModifier(30);
 
@@ -24,7 +25,7 @@ export default function App() {
         activationConstraint={{ delay: 300, tolerance: 30 }} // activate dragging after 300ms and abort if moved 30px before start
       /> */}
 
-      <Modifiers
+      {/* <Modifiers
         modifiers={[restrictToVerticalAxis, restrictToWindowEdges]}
         axis="vertical"
       />
@@ -34,7 +35,9 @@ export default function App() {
           axis="horizontal"
         />
       </div>
-      <Modifiers modifiers={[restrictToWindowEdges, snapToGrid]} />
+      <Modifiers modifiers={[restrictToWindowEdges, snapToGrid]} /> */}
+
+      <DragOverlayExample />
     </div>
   );
 }
