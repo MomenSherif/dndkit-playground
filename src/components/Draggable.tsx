@@ -10,9 +10,10 @@ export default function Draggable({
   id,
   children,
 }: PropsWithChildren<DraggableProps>) {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id,
-  });
+  const { attributes, listeners, setNodeRef, setActivatorNodeRef, transform } =
+    useDraggable({
+      id,
+    });
 
   return (
     <div
@@ -23,7 +24,12 @@ export default function Draggable({
       className="inline-flex items-center space-x-2 bg-white shadow-sm rounded px-2 py-1 text-gray-900"
     >
       {children}
-      <button {...listeners} {...attributes} className="touch-none">
+      <button
+        ref={setActivatorNodeRef}
+        {...listeners}
+        {...attributes}
+        className="touch-none"
+      >
         <DragIcon className="w-6 h-6" />
       </button>
     </div>
