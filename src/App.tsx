@@ -10,6 +10,7 @@ import DragHandle from './Examples/useDraggable/2-DragHandle';
 import ActivationConstraint from './Examples/useDraggable/3-ActivationConstraint';
 import Modifiers from './Examples/useDraggable/4-Modifiers';
 import DragOverlayExample from './Examples/useDraggable/5-DragOverlay';
+import DroppableExample from './Examples/useDroppable/Droppable';
 
 const snapToGrid = createSnapModifier(30);
 
@@ -37,7 +38,9 @@ export default function App() {
       </div>
       <Modifiers modifiers={[restrictToWindowEdges, snapToGrid]} /> */}
 
-      <DragOverlayExample />
+      {/* <DragOverlayExample /> */}
+
+      <DroppableExample />
     </div>
   );
 }
