@@ -5,6 +5,7 @@ import {
   restrictToVerticalAxis,
   restrictToWindowEdges,
 } from '@dnd-kit/modifiers';
+import SortableExample from './Examples/Sortable/1.Sortable';
 import BasicSetup from './Examples/useDraggable/1-BasicSetup';
 import DragHandle from './Examples/useDraggable/2-DragHandle';
 import ActivationConstraint from './Examples/useDraggable/3-ActivationConstraint';
@@ -40,7 +41,9 @@ export default function App() {
 
       {/* <DragOverlayExample /> */}
 
-      <DroppableExample />
+      {/* <DroppableExample /> */}
+
+      <SortableExample />
     </div>
   );
 }
