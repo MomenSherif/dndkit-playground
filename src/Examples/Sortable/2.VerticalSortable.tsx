@@ -1,17 +1,20 @@
 import {
   closestCorners,
-  defaultDropAnimationSideEffects,
   DndContext,
-  DragOverlay,
   KeyboardSensor,
+  MeasuringStrategy,
   PointerSensor,
-  useDndContext,
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
-import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import {
+  restrictToFirstScrollableAncestor,
+  restrictToVerticalAxis,
+} from '@dnd-kit/modifiers';
+import {
+  AnimateLayoutChanges,
   arrayMove,
+  defaultAnimateLayoutChanges,
   SortableContext,
   sortableKeyboardCoordinates,
   useSortable,
@@ -38,11 +41,16 @@ export default function VerticalSortableExample() {
     }),
   );
 
+  const handleDelete = (id: TodoItemProps['id']) => {
+    setItems(prevItems => prevItems.filter(item => item.id !== id));
+  };
+
   return (
     <DndContext
+      measuring={{ droppable: { strategy: MeasuringStrategy.Always } }}
       sensors={sensors}
       collisionDetection={closestCorners}
-      modifiers={[restrictToVerticalAxis]}
+      modifiers={[restrictToVerticalAxis, restrictToFirstScrollableAncestor]}
       onDragStart={event => {
         const { active } = event;
         setActiveIndex(active ? active.data.current?.sortable.index : null);
@@ -60,9 +68,9 @@ export default function VerticalSortableExample() {
       }}
     >
       <SortableContext items={items} strategy={verticalListSortingStrategy}>
-        <div className="space-y-3 py-5">
+        <div className="space-y-3 py-5 max-h-[500px] overflow-auto">
           {items.map(item => (
-            <SortableTodoItem key={item.id} {...item} />
+            <SortableTodoItem key={item.id} onDelete={handleDelete} {...item} />
           ))}
         </div>
       </SortableContext>
@@ -71,6 +79,9 @@ export default function VerticalSortableExample() {
 }
 
 function SortableTodoItem(props: TodoItemProps) {
+  const animateLayoutChanges: AnimateLayoutChanges = args =>
+    defaultAnimateLayoutChanges({ ...args, wasDragging: true });
+
   const {
     setNodeRef,
     setActivatorNodeRef,
@@ -81,6 +92,7 @@ function SortableTodoItem(props: TodoItemProps) {
     isDragging,
   } = useSortable({
     id: props.id,
+    animateLayoutChanges,
   });
 
   return (
