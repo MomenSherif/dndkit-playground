@@ -324,7 +324,7 @@ function SortableTodoItem(props: TodoItemProps) {
   return (
     <TodoItem
       ref={setNodeRef}
-      style={{ transition, transform: CSS.Transform.toString(transform) }}
+      style={{ transition, transform: CSS.Translate.toString(transform) }}
       className={`focus:outline-none focus:ring ${
         isDragging ? 'opacity-50' : ''
       }`}
