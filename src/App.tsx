@@ -7,6 +7,7 @@ import {
 } from '@dnd-kit/modifiers';
 import SortableExample from './Examples/Sortable/1.Sortable';
 import VerticalSortableExample from './Examples/Sortable/2.VerticalSortable';
+import MultipleContainersExample from './Examples/Sortable/3.MultipleContainers';
 import BasicSetup from './Examples/useDraggable/1-BasicSetup';
 import DragHandle from './Examples/useDraggable/2-DragHandle';
 import ActivationConstraint from './Examples/useDraggable/3-ActivationConstraint';
@@ -45,7 +46,8 @@ export default function App() {
       {/* <DroppableExample /> */}
 
       {/* <SortableExample /> */}
-      <VerticalSortableExample />
+      {/* <VerticalSortableExample /> */}
+      <MultipleContainersExample />
     </div>
   );
 }
