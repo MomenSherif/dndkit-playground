@@ -24,12 +24,3 @@
 - **Performance:** It was built with performance in mind in order to support silky smooth animations.
 - **Presets:** Need to build a sortable interface? Check out `@dnd-kit/sortable`, which is a thin layer built on top of `@dnd-kit/core`. More presets coming in the future.
 
-## Documentation
-
-To learn how to get started with **dnd kit**, visit the official documentation website. You'll find in-depth API documentation, tips and guides to help you build drag and drop interfaces.
-
-<p>
-<a href="https://docs.dndkit.com">
-<img alt="Visit @dnd-kit documentation" src=".github/assets/documentation.svg" width="200" />
-</a>
-</p>
