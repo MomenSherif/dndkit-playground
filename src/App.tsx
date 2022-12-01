@@ -19,7 +19,7 @@ const snapToGrid = createSnapModifier(30);
 
 export default function App() {
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-50 min-h-screen overflow-hidden">
+    <div className="flex flex-col items-center bg-gray-50 pt-20 min-h-screen overflow-hidden">
       {/* <BasicSetup /> */}
       {/* <DragHandle /> */}
 

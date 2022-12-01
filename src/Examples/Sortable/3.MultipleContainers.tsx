@@ -51,6 +51,7 @@ export default function MultipleContainersExample() {
   const [items, setItems] = useState<Items>(() => ({
     One: todos.slice(0, 5).map(t => t.id),
     Two: todos.slice(5, 10).map(t => t.id),
+    Three: [],
   }));
   const [containers, setContainers] = useState(() => Object.keys(items));
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
